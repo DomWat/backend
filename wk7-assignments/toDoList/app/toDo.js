@@ -35,6 +35,7 @@ function populateToDoList() {
     // clear the list so it doesn't add on each time
     toDoList.innerHTML = ''
 
+    // fetching all of the information and then displaying it to the user
     fetch('http://localhost:3000/todos')
     .then(response => response.json())
     .then(todos => {
