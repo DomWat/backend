@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const { v4: uuidv4 } = require('uuid')
+
 
 // allows html to access the server info
 app.use(cors())
@@ -32,13 +34,27 @@ app.post('/todos', (req, res) => {
     // check if item, priority, date is not null
     if (item != null && priority != null && date != null) {
         // creates an object from users info and pushes to array
-        let task = { item: item, priority: priority, date: date }
+        // uuidv4 adds a unique ID automatically to each item 
+        let task = { item: item, priority: priority, date: date, taskID: uuidv4()}
         toDoListArray.push(task)
         res.json({ success: true })
     } else {
-        res.json({success: false, errorMessage: 'Unable to add task'})
+        res.json({ success: false, errorMessage: 'Unable to add task' })
     }
 
+})
+
+// delete a task 
+// todos/2
+// todos/22 the number should be id and has to be dynamic
+app.delete('/todos/:taskId', (req, res) => {
+    let taskId = req.params.taskId
+
+    // filter todos and ignore the todo item with the taskId to be deleted
+    toDoListArray.filter(todo => {
+        return todo.taskID != taskId
+    })
+    res.jston({success: true})
 })
 
 
