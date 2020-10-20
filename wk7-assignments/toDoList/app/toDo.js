@@ -44,10 +44,22 @@ function populateToDoList() {
             <li><h3>${item.item}</h3>
             <li>Priority level: ${item.priority}</li>
             <li>Date created: ${item.date}</li>
+            <button onclick='deleteTask(${items.taskId})>Delete</button>
             </li>
             `
         })
         toDoList.insertAdjacentHTML('beforeend', items.join(''))
+    })
+}
+
+// will delete a task
+function deleteTask(taskId) {
+    fetch(`http://localhost:3000/todos/${taskId}`, {
+        method: 'DELETE',
+        
+    }).then(response => response.json())
+    .then(result => {
+        populateToDoList()
     })
 }
 
