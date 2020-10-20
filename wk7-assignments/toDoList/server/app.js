@@ -29,10 +29,16 @@ app.post('/todos', (req, res) => {
     // getting date
     let date = req.body.date
 
-    // creates an object from users info and pushes to array
-    let task = {item: item, priority: priority, date: date}
-    toDoListArray.push(task)
-    res.json({success: true})
+    // check if item, priority, date is not null
+    if (item != null && priority != null && date != null) {
+        // creates an object from users info and pushes to array
+        let task = { item: item, priority: priority, date: date }
+        toDoListArray.push(task)
+        res.json({ success: true })
+    } else {
+        res.json({success: false, errorMessage: 'Unable to add task'})
+    }
+
 })
 
 
