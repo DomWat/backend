@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href = "/styles/styles.css" />
+    </head>
+
+    <body>
+
+        <h1>Movies</h1>
+
+        <form method="POST" action = "movies/create">
+            <input type = "text" placeholder = "title" name = "title">
+            <input type = "text" placeholder = "description" name = "descripton">
+            <input type = "text" placeholder = "genre" name = "genre">
+            <input type = "text" placeholder = "movie poster" name = "movie poster">
+            <button>Add</button>
+        </form>
+
+
+        <ul>
+            {{#movies}}
+                <form method="POST" action = "movies/delete">
+                <input type="hidden" value = {{movieId}} name = "movieId"/>
+                <li>
+                    <label><h2>{{title}}<h2>
+                       <img src = "/pics/ironman.png"><br>
+                        {{description}}<br>
+                        {{genre}} <br>
+                        <button>Delete</button></label>
+                </li>
+                </form>
+            {{/movies}}
+        </ul>
+
+    </body>
+</html>
