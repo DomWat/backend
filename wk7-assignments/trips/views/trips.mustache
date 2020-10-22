@@ -1,0 +1,48 @@
+<html>
+
+    <head>
+        <link rel = "stylesheet" href = "/styles/styles.css">
+    </head>
+
+    <body>
+        <div id = "signOut">
+            <button id = "signOut">Sign Out</button>
+            {{! <input type = "hidden" value = {{userId}} name = "userId" /> }}
+        </div>
+
+
+        <div id ="heading">
+            <h1 id = "mainTitle">Make Your Trips!!!</h1>
+        </div>
+
+        <div id = "content">
+            <form method = "POST" action = "trips/create-trip">
+                <input type = "text" placeholder = "Name" name = "name" />
+                <input type = "text" placeholder = "Deaprture Date" name = "departDate" />
+                <input type = "text" placeholder = "Returning Date" name = "returnDate" />
+
+                <button>Add</button>
+
+            </form>
+        </div>
+
+        <div id = "info">
+            {{#trips}}
+                <form method = "POST" action = "trips/delete-trip">
+                    <ul id = "tripInfo">
+                        <li><label><h3>Destination: {{name}}</h3></label>
+                            <label>Dates: {{departDate}} - {{returnDate}}</label>
+                            <button>Delete</button>
+                            <input type = "hidden" value = {{tripId}} name = "tripId" />
+                        </li>
+                    </ul>
+                </form>
+
+            {{/trips}}
+        </div>
+    
+
+
+
+    </body>
+</html>

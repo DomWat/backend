@@ -1,0 +1,20 @@
+#heading {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#mainTitle {
+    color: red;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+}
